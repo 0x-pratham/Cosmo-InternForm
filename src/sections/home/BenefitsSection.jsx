@@ -34,7 +34,7 @@ function BenefitsSection() {
           highlight="Will Receive"
         />
 
-        <div className="grid-cards sm:grid-cols-2 lg:grid-cols-4">
+        <div className="ui-grid ui-grid--4">
           {benefits.map((item) => {
             const ItemIcon = item.icon;
             return (
@@ -43,8 +43,7 @@ function BenefitsSection() {
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -4 }}
-                className="h-full p-5 sm:p-6 rounded-2xl surface-card flex flex-col"
+                className="surface-card h-full min-w-0 p-5 sm:p-6 flex flex-col"
               >
                 <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-teal-50 to-amber-50 text-teal-700 border border-teal-100 flex items-center justify-center mb-4 shrink-0">
                   <ItemIcon className="w-5 h-5" />

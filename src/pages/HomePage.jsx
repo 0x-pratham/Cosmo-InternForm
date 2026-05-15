@@ -24,7 +24,7 @@ function HomePage() {
 
       <FAQSection />
 
-     <FinalCTASection />
+      <FinalCTASection />
 
     </MainLayout>
   );

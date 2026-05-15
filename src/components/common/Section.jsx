@@ -7,7 +7,7 @@ function Section({
 }) {
   const variants = {
     default: "",
-    alt: "bg-white/60 border-y border-border",
+    alt: "bg-white/70 border-y border-border",
     muted: "bg-pearl/80",
   };
 
@@ -15,10 +15,10 @@ function Section({
     <section
       id={id}
       className={[
-        "relative w-full",
-        id ? "scroll-mt-24" : "",
-        noPadding ? "" : "py-20 sm:py-24 lg:py-28",
-        variants[variant] ?? variants.default,
+        "page-section w-full",
+        id ? "scroll-mt-[calc(var(--nav-height)+1rem)]" : "",
+        noPadding ? "!py-0" : "",
+        variants[variant] ?? "",
         className,
       ]
         .filter(Boolean)

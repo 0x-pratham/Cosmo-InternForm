@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import {
   Layers,
   Users,
@@ -61,7 +61,7 @@ function AboutSection() {
           description="The Cosmolix Industrial Internship Program 2026 provides students with real-world technical exposure through project-based implementation, industry mentorship, and practical collaboration."
         />
 
-        <div className="grid-cards sm:grid-cols-2 lg:grid-cols-3">
+        <div className="ui-grid ui-grid--3">
           {features.map((feature) => (
             <FeatureCard key={feature.title} {...feature} />
           ))}
@@ -74,14 +74,13 @@ function AboutSection() {
 function FeatureCard({ icon: Icon, title, description }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45 }}
-      viewport={{ once: true, margin: "-40px" }}
-      whileHover={{ y: -4 }}
-      className="h-full p-6 sm:p-7 rounded-2xl surface-card"
+      transition={{ duration: 0.4 }}
+      viewport={{ once: true }}
+      className="surface-card p-6 sm:p-7 h-full min-w-0"
     >
-      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-600 to-teal-400 flex items-center justify-center text-white mb-5 shadow-md shadow-teal-500/15">
+      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-600 to-teal-400 flex items-center justify-center text-white mb-5">
         <Icon className="w-5 h-5" />
       </div>
       <h3 className="font-display text-xl font-semibold text-ink mb-2">{title}</h3>
@@ -91,3 +90,5 @@ function FeatureCard({ icon: Icon, title, description }) {
 }
 
 export default AboutSection;
+
+

@@ -3,9 +3,11 @@ import Footer from "../components/common/Footer";
 
 function MainLayout({ children }) {
   return (
-    <div className="min-h-screen flex flex-col text-ink">
+    <div className="min-h-screen flex flex-col text-ink w-full overflow-x-clip">
       <Navbar />
-      <main className="flex-1 w-full pt-[var(--nav-height)]">{children}</main>
+      <main className="page-main flex-1 w-full min-w-0 pt-[var(--nav-height)]">
+        {children}
+      </main>
       <Footer />
     </div>
   );

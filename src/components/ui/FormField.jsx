@@ -1,13 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 
-function FormField({
-  label,
-  error,
-  children,
-  className = "",
-}) {
+function FormField({ label, error, children, className = "" }) {
   return (
-    <div className={className}>
+    <motion.div
+      layout
+      className={`flex flex-col ${className}`.trim()}
+    >
       <label className="block font-label text-xs uppercase tracking-wider text-muted mb-2.5">
         {label}
       </label>
@@ -20,26 +18,25 @@ function FormField({
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
+            role="alert"
             className="text-red-600 text-sm mt-2 flex items-center gap-1.5"
           >
-            <span className="inline-block w-1 h-1 rounded-full bg-red-500" />
+            <span className="inline-block w-1 h-1 rounded-full bg-red-500 shrink-0" />
             {error}
           </motion.p>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
 
-export function TextInput({ registration, error, ...props }) {
+export function TextInput({ registration, error, label, className = "", ...props }) {
   return (
-    <FormField label={props.label} error={error}>
+    <FormField label={label} error={error}>
       <input
         {...registration}
         {...props}
-        className={`w-full h-14 rounded-2xl px-5 text-ink ${
-          error ? "border-red-300 focus:border-red-400" : ""
-        } ${props.className || ""}`}
+        className={`form-control ${error ? "is-invalid" : ""} ${className}`.trim()}
       />
     </FormField>
   );

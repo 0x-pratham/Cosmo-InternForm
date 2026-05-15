@@ -67,7 +67,7 @@ function DomainsSection() {
           description="Choose from high-demand technology domains designed for practical exposure and real-world implementation experience."
         />
 
-        <div className="grid-cards lg:grid-cols-2">
+        <div className="ui-grid ui-grid--2">
           {domains.map((domain, index) => (
             <DomainCard key={domain.title} domain={domain} index={index} />
           ))}
@@ -86,8 +86,7 @@ function DomainCard({ domain, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: index * 0.05 }}
       viewport={{ once: true, margin: "-40px" }}
-      whileHover={{ y: -4 }}
-      className="h-full flex flex-col p-6 sm:p-7 rounded-2xl surface-card"
+      className="surface-card h-full min-w-0 flex flex-col p-6 sm:p-7"
     >
       <div className="flex items-center justify-between mb-5">
         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-600 to-teal-400 flex items-center justify-center text-white shadow-md shadow-teal-500/15">

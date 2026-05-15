@@ -12,7 +12,7 @@ function FinalCTASection() {
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center p-8 sm:p-12 lg:p-14 rounded-3xl glass-panel max-w-4xl mx-auto"
+          className="text-center p-8 sm:p-12 lg:p-14 glass-panel w-full max-w-3xl mx-auto"
         >
           <p className="font-label uppercase text-xs text-teal-700 mb-4">
             Start Your Journey

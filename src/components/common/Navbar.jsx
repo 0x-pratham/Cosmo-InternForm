@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Container from "./Container";
 import Button from "../ui/Button";
@@ -25,100 +25,92 @@ function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [location.pathname]);
-
   const getNavHref = (hash) => (isHome ? hash : `/${hash}`);
+  const closeMobileMenu = () => setMobileOpen(false);
 
   const handleNavClick = (e, hash) => {
+    closeMobileMenu();
     if (!isHome) return;
     e.preventDefault();
-    setMobileOpen(false);
     document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 h-[var(--nav-height)] transition-shadow duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 h-[var(--nav-height)] border-b transition-shadow ${
         scrolled
-          ? "bg-white/95 backdrop-blur-xl border-b border-border shadow-sm"
-          : "bg-white/90 backdrop-blur-md border-b border-border/60"
+          ? "bg-white/95 backdrop-blur-xl border-border shadow-sm"
+          : "bg-white/90 backdrop-blur-md border-border/60"
       }`}
     >
-      <Container className="h-full">
-        <motion.div className="flex h-full items-center justify-between gap-4">
-          <Link to="/" className="flex items-center gap-3 group shrink-0 min-w-0">
-            <img
-              src={logo}
-              alt="Cosmolix"
-              className="w-10 h-10 sm:w-11 sm:h-11 object-contain"
-            />
-            <div className="min-w-0">
-              <h1 className="font-display text-lg sm:text-xl font-semibold tracking-tight text-ink truncate">
-                COSMOLIX
-              </h1>
-              <p className="font-label text-[9px] sm:text-[10px] text-muted tracking-widest truncate">
-                BEYOND THE LIMITS
-              </p>
+      <Container className="h-full !py-0 flex items-center">
+        <div className="grid w-full grid-cols-[1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-4">
+          <Link
+            to="/"
+            onClick={closeMobileMenu}
+            className="flex items-center gap-3 min-w-0 justify-self-start"
+          >
+            <img src={logo} alt="Cosmolix" className="w-10 h-10 object-contain shrink-0" />
+            <div className="min-w-0 hidden sm:block">
+              <p className="font-display text-lg font-semibold text-ink leading-tight">COSMOLIX</p>
+              <p className="font-label text-[10px] text-muted tracking-widest">BEYOND THE LIMITS</p>
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <nav className="hidden lg:flex items-center justify-center gap-8" aria-label="Main">
             {navLinks.map((link) => (
               <a
                 key={link.hash}
                 href={getNavHref(link.hash)}
                 onClick={(e) => handleNavClick(e, link.hash)}
-                className="relative font-label text-[11px] uppercase tracking-wider text-muted hover:text-teal-700 whitespace-nowrap py-1"
+                className="font-label text-[11px] uppercase tracking-wider text-muted hover:text-teal-700"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          <div className="hidden lg:block shrink-0">
-            <Button to="/apply" variant="primary" className="!px-5 !py-2.5 !text-xs">
-              Apply Now
-            </Button>
+          <div className="flex items-center justify-self-end gap-2">
+            <div className="hidden lg:block">
+              <Button to="/apply" variant="primary" className="!py-2.5 !px-5 !text-xs" onClick={closeMobileMenu}>
+                Apply Now
+              </Button>
+            </div>
+            <button
+              type="button"
+              aria-label="Menu"
+              aria-expanded={mobileOpen}
+              className="lg:hidden p-2.5 rounded-xl border border-border"
+              onClick={() => setMobileOpen(!mobileOpen)}
+            >
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
-
-          <button
-            type="button"
-            aria-label="Toggle menu"
-            aria-expanded={mobileOpen}
-            className="lg:hidden p-2.5 rounded-xl border border-border text-ink shrink-0"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </motion.div>
+        </div>
       </Container>
 
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
             className="lg:hidden border-t border-border bg-white overflow-hidden"
           >
-            <Container className="py-5 space-y-1">
+            <Container className="py-4 space-y-1">
               {navLinks.map((link) => (
                 <a
                   key={link.hash}
                   href={getNavHref(link.hash)}
                   onClick={(e) => handleNavClick(e, link.hash)}
-                  className="block font-label text-xs uppercase tracking-wider text-muted hover:text-teal-700 py-3 px-1"
+                  className="block font-label text-xs uppercase tracking-wider text-muted py-3"
                 >
                   {link.label}
                 </a>
               ))}
-              <motion.div className="pt-3">
-                <Button to="/apply" variant="primary" className="w-full !rounded-xl !py-3.5">
-                  Apply Now
-                </Button>
-              </motion.div>
+              <Button to="/apply" variant="primary" className="w-full !rounded-xl mt-2" onClick={closeMobileMenu}>
+                Apply Now
+              </Button>
             </Container>
           </motion.div>
         )}

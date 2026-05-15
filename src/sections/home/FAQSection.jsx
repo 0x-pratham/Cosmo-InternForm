@@ -38,7 +38,7 @@ function FAQSection() {
 
   return (
     <Section id="faq">
-      <Container stack size="wide">
+      <Container stack>
         <SectionHeader
           label="FAQ"
           title="Frequently Asked"
