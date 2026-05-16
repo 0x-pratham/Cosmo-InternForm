@@ -46,8 +46,15 @@ function Navbar() {
       <Container className="relative h-[var(--nav-height)] !py-0 flex items-center">
         <div className="flex w-full min-w-0 items-center justify-between gap-3 sm:gap-4">
           <Link
-            to="/"
-            onClick={closeMobileMenu}
+  to="/"
+  onClick={() => {
+    closeMobileMenu();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }}
             className="flex min-w-0 max-w-[min(100%,18rem)] items-center gap-2.5 sm:gap-3 shrink-0"
           >
             <img

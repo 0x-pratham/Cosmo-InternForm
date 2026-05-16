@@ -36,7 +36,7 @@ function FinalCTASection() {
               <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
             </Button>
             <Button
-              href="https://chat.whatsapp.com/EAHPR4kmq7A5eu0xsK9kJF"
+              href="https://chat.whatsapp.com/JtK1a5O0ILG7E0olsYkbvv"
               variant="outline"
               className="min-h-[3rem] justify-center sm:min-h-0"
             >

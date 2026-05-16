@@ -14,7 +14,7 @@ function HeroSection() {
   return (
     <Section
       noPadding
-      className="relative overflow-hidden !py-12 sm:!py-16 lg:!py-20 xl:!py-[5.25rem] flex items-center"
+      className="relative overflow-hidden !pt-4 !pb-12 sm:!pt-6 sm:!pb-16 lg:!pt-8 lg:!pb-20 flex items-center"
     >
       <Container className="relative z-[1] w-full">
         <div className="grid w-full min-w-0 items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12 xl:gap-16">
@@ -37,6 +37,48 @@ function HeroSection() {
               Join a practical industry-focused internship with real-world projects, expert mentorship,
               and exposure to advanced technologies.
             </p>
+            <div className="flex flex-col gap-4 rounded-[var(--radius-lg)] border border-teal-100 bg-white/80 px-5 py-5 shadow-[0_10px_30px_rgba(20,184,166,0.08)] backdrop-blur-sm">
+
+  {/* Top Label */}
+  <div className="flex items-center gap-2">
+    <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+
+    <p className="font-label text-[11px] uppercase tracking-[0.16em] text-teal-700">
+      Limited Time Internship Offer
+    </p>
+  </div>
+
+  {/* Pricing */}
+  <div className="flex flex-wrap items-end gap-x-4 gap-y-2">
+
+    <div className="flex items-center gap-3 flex-wrap">
+
+      {/* Offer Price */}
+      <span className="text-3xl font-semibold tracking-[-0.03em] text-ink font-sans">
+  ₹3,999/-
+</span>
+
+      {/* Original Price */}
+      <span className="font-sans text-base font-medium text-muted line-through">
+  ₹4,999/-
+</span> 
+
+    </div>
+
+    {/* Badge */}
+    <span className="inline-flex items-center rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-800 border border-teal-100">
+      First 30 Members Only
+    </span>
+
+  </div>
+
+  {/* Description */}
+  <p className="text-sm leading-relaxed text-muted">
+    Secure your internship seat with exclusive early-access pricing and gain
+    industry-level project experience, mentorship, certifications, and career opportunities.
+  </p>
+
+</div>
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <Button to="/apply" variant="primary" className="w-full min-h-[3rem] justify-center sm:w-auto sm:min-h-0">
                 Apply Now
