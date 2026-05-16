@@ -51,6 +51,27 @@ function ApplyPage() {
     try {
       toast.loading("Submitting your application...", { id: "submit-loading" });
 
+            const { data: existingUser, error: existingUserError } = await supabase
+        .from("internship_applications")
+        .select("id")
+        .or(`email.eq.${data.email},prn.eq.${data.prn}`)
+        .maybeSingle();
+
+      if (existingUserError && existingUserError.code !== "PGRST116") {
+        throw existingUserError;
+      }
+
+      if (existingUser) {
+        toast.dismiss("submit-loading");
+
+        toast.error(
+          "This email or PRN is already registered for the internship."
+        );
+
+        setIsSubmitting(false);
+        return;
+      }
+
       const { error } = await supabase.from("internship_applications").insert([
         {
           full_name: data.fullName,

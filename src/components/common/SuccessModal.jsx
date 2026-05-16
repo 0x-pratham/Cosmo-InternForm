@@ -1,8 +1,27 @@
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, MessageCircle, ExternalLink } from "lucide-react";
 import Button from "../ui/Button";
 
 function SuccessModal({ isOpen }) {
+    useEffect(() => {
+  if (isOpen) {
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    document.body.style.overflow = "hidden";
+
+  } else {
+    document.body.style.overflow = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [isOpen]);
   return (
     <AnimatePresence>
       {isOpen && (
@@ -10,14 +29,14 @@ function SuccessModal({ isOpen }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[999] flex items-center justify-center bg-ink/50 backdrop-blur-md p-6"
+          className="fixed inset-0 z-[9999] flex items-center justify-center overflow-y-auto bg-ink/60 backdrop-blur-md px-4 py-6"
         >
           <motion.div
             initial={{ scale: 0.85, opacity: 0, y: 24 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.85, opacity: 0, y: 24 }}
             transition={{ type: "spring", stiffness: 300, damping: 24 }}
-            className="glass-panel relative w-full max-w-2xl overflow-hidden p-7 sm:max-w-3xl sm:p-10 lg:p-11 xl:max-w-3xl"
+            className="glass-panel relative my-auto w-full max-w-2xl overflow-hidden p-6 sm:max-w-3xl sm:p-10 lg:p-11 xl:max-w-3xl"
           >
             <motion.div
               className="pointer-events-none absolute top-0 right-0 h-60 w-60 rounded-full bg-gradient-to-br from-teal-300/20 to-amber-300/20 blur-[80px]"
