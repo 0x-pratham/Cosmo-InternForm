@@ -92,7 +92,7 @@ function ApplyPage() {
     <MainLayout>
       <SuccessModal isOpen={showSuccessModal} />
 
-      <Section noPadding className="py-10 sm:py-14 lg:py-[4.5rem]">
+      <Section className="py-10 sm:py-14 lg:py-[4.5rem]">
         <Container stack narrow>
           <header className="section-heading">
             <p className="mb-3 inline-flex items-center justify-center gap-2 font-label text-xs uppercase tracking-[0.14em] text-teal-700 sm:mb-4">
