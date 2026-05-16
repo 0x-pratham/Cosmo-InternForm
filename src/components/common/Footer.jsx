@@ -3,7 +3,7 @@ import Container from "./Container";
 
 function Footer() {
   return (
-    <footer className="mt-auto border-t border-border bg-white/80 backdrop-blur-sm">
+    <footer className="border-t border-border bg-white/80 backdrop-blur-sm mt-10">
       <Container className="py-9 sm:py-11 lg:py-12">
         <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-3 md:gap-10 lg:gap-12">
           <div className="text-center md:text-left">
