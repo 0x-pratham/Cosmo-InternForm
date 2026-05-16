@@ -45,28 +45,28 @@ function FAQSection() {
           highlight="Questions"
         />
 
-        <div className="w-full max-w-3xl mx-auto space-y-3">
+        <div className="mx-auto w-full max-w-3xl space-y-3 sm:space-y-3.5">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className={`rounded-2xl surface-card overflow-hidden ${
-                active === index ? "ring-1 ring-teal-200/60" : ""
+              className={`surface-card overflow-hidden rounded-[var(--radius-lg)] transition-[box-shadow,border-color] duration-200 ${
+                active === index ? "ring-1 ring-teal-200/70 shadow-md" : ""
               }`}
             >
               <button
                 type="button"
                 onClick={() => setActive(active === index ? null : index)}
-                className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left"
+                className="flex w-full items-center justify-between gap-4 p-4 text-left transition-colors duration-200 hover:bg-teal-50/35 sm:p-6"
                 aria-expanded={active === index}
               >
-                <span className="text-base sm:text-lg font-semibold text-ink pr-2">
+                <span className="pr-2 text-base font-semibold leading-snug text-ink text-pretty sm:text-lg">
                   {faq.question}
                 </span>
                 <motion.span
                   animate={{ rotate: active === index ? 180 : 0 }}
-                  className="shrink-0 w-9 h-9 rounded-full bg-teal-50 text-teal-700 flex items-center justify-center border border-teal-100"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-pill)] border border-teal-100 bg-teal-50 text-teal-700 transition-[background-color,border-color] duration-200"
                 >
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="h-4 w-4" aria-hidden />
                 </motion.span>
               </button>
 
@@ -79,7 +79,7 @@ function FAQSection() {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <p className="px-5 sm:px-6 pb-5 sm:pb-6 text-muted text-sm sm:text-base leading-relaxed border-t border-border pt-4">
+                    <p className="border-t border-border px-4 pb-4 pt-4 text-pretty text-sm leading-relaxed text-muted sm:px-6 sm:pb-6 sm:text-base">
                       {faq.answer}
                     </p>
                   </motion.div>

@@ -92,22 +92,22 @@ function ApplyPage() {
     <MainLayout>
       <SuccessModal isOpen={showSuccessModal} />
 
-      <Section noPadding className="py-12 sm:py-16 lg:py-20">
+      <Section noPadding className="py-10 sm:py-14 lg:py-[4.5rem]">
         <Container stack narrow>
           <header className="section-heading">
-            <p className="font-label uppercase text-xs text-teal-700 mb-4 inline-flex items-center justify-center gap-2">
-              <FileText className="w-4 h-4 shrink-0" aria-hidden />
+            <p className="mb-3 inline-flex items-center justify-center gap-2 font-label text-xs uppercase tracking-[0.14em] text-teal-700 sm:mb-4">
+              <FileText className="h-4 w-4 shrink-0" aria-hidden />
               Application Form
             </p>
-            <h1 className="font-display text-4xl sm:text-5xl font-semibold text-ink leading-tight">
+            <h1 className="font-display text-balance text-[clamp(1.875rem,4vw+0.65rem,3rem)] font-semibold leading-[1.12] text-ink">
               Apply For
-              <span className="block text-gradient-luxury mt-1">
+              <span className="mt-1 block text-gradient-luxury sm:mt-1.5">
                 Internship 2026
               </span>
             </h1>
-            <p className="text-muted text-base sm:text-lg mt-5 leading-relaxed max-w-2xl mx-auto">
-              Complete the form below to register for the Cosmolix Industrial
-              Internship Program. All fields are required.
+            <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted sm:mt-5 sm:text-lg">
+              Complete the form below to register for the Cosmolix Industrial Internship Program.
+              All fields are required.
             </p>
           </header>
 
@@ -115,109 +115,109 @@ function ApplyPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="w-full rounded-3xl glass-panel p-6 sm:p-8 lg:p-10"
+            className="glass-panel w-full p-5 sm:p-8 lg:p-10"
           >
-            <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
-            <motion.div
-              layout
-              className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6"
-            >
-              <InputField
-                label="Full Name"
-                placeholder="Enter your full name"
-                autoComplete="name"
-                maxLength={100}
-                error={errors.fullName?.message}
-                registration={register("fullName")}
-              />
+            <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full min-w-0">
+              <motion.div
+                layout
+                className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-6"
+              >
+                <InputField
+                  label="Full Name"
+                  placeholder="Enter your full name"
+                  autoComplete="name"
+                  maxLength={100}
+                  error={errors.fullName?.message}
+                  registration={register("fullName")}
+                />
 
-              <InputField
-                label="College Name"
-                placeholder="Enter college name"
-                autoComplete="organization"
-                maxLength={150}
-                error={errors.collegeName?.message}
-                registration={register("collegeName")}
-              />
+                <InputField
+                  label="College Name"
+                  placeholder="Enter college name"
+                  autoComplete="organization"
+                  maxLength={150}
+                  error={errors.collegeName?.message}
+                  registration={register("collegeName")}
+                />
 
-              <InputField
-                label="PRN / Enrollment ID"
-                placeholder="Enter PRN"
-                autoComplete="off"
-                maxLength={50}
-                error={errors.prn?.message}
-                registration={register("prn")}
-              />
+                <InputField
+                  label="PRN / Enrollment ID"
+                  placeholder="Enter PRN"
+                  autoComplete="off"
+                  maxLength={50}
+                  error={errors.prn?.message}
+                  registration={register("prn")}
+                />
 
-              <InputField
-                label="Email Address"
-                placeholder="Enter email"
-                type="email"
-                autoComplete="email"
-                maxLength={254}
-                error={errors.email?.message}
-                registration={register("email")}
-              />
+                <InputField
+                  label="Email Address"
+                  placeholder="Enter email"
+                  type="email"
+                  autoComplete="email"
+                  maxLength={254}
+                  error={errors.email?.message}
+                  registration={register("email")}
+                />
 
-              <InputField
-                label="Phone Number"
-                placeholder="10-digit mobile number"
-                type="tel"
-                autoComplete="tel"
-                inputMode="tel"
-                maxLength={15}
-                error={errors.phone?.message}
-                registration={register("phone")}
-              />
+                <InputField
+                  label="Phone Number"
+                  placeholder="10-digit mobile number"
+                  type="tel"
+                  autoComplete="tel"
+                  inputMode="tel"
+                  maxLength={15}
+                  error={errors.phone?.message}
+                  registration={register("phone")}
+                />
 
-              <FormField label="Preferred Domain" error={errors.domain?.message}>
-                <select
-                  {...register("domain")}
-                  className={`form-select ${errors.domain ? "is-invalid" : ""}`}
-                  defaultValue=""
-                >
-                  <option value="" disabled>
-                    Select Domain
-                  </option>
-                  {INTERNSHIP_DOMAINS.map((domain) => (
-                    <option key={domain} value={domain}>
-                      {domain}
+                <FormField label="Preferred Domain" error={errors.domain?.message}>
+                  <select
+                    {...register("domain")}
+                    className={`form-select ${errors.domain ? "is-invalid" : ""}`}
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Select Domain
                     </option>
-                  ))}
-                </select>
+                    {INTERNSHIP_DOMAINS.map((domain) => (
+                      <option key={domain} value={domain}>
+                        {domain}
+                      </option>
+                    ))}
+                  </select>
+                </FormField>
+              </motion.div>
+
+              <FormField
+                label="Why do you want to join this internship?"
+                error={errors.motivation?.message}
+                className="mt-6 sm:mt-7"
+              >
+                <textarea
+                  rows={5}
+                  maxLength={2000}
+                  {...register("motivation")}
+                  placeholder="Share your goals, interests, and what you hope to learn..."
+                  className={`form-textarea ${errors.motivation ? "is-invalid" : ""}`}
+                />
               </FormField>
-            </motion.div>
 
-            <FormField
-              label="Why do you want to join this internship?"
-              error={errors.motivation?.message}
-              className="mt-5 sm:mt-6"
-            >
-              <textarea
-                rows={5}
-                maxLength={2000}
-                {...register("motivation")}
-                placeholder="Share your goals, interests, and what you hope to learn..."
-                className={`form-textarea ${errors.motivation ? "is-invalid" : ""}`}
-              />
-            </FormField>
-
-            <motion.button
-              type="submit"
-              disabled={isSubmitting}
-              whileHover={!isSubmitting ? { scale: 1.01 } : {}}
-              whileTap={!isSubmitting ? { scale: 0.99 } : {}}
-              className="mt-6 sm:mt-8 w-full h-14 rounded-2xl btn-luxury font-label text-sm uppercase tracking-wider flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? (
-                "Submitting..."
-              ) : (
-                <>
-                  Submit Application
-                  <Send className="w-4 h-4 shrink-0" aria-hidden />
-                </>
-              )}
-            </motion.button>
+              <motion.button
+                type="submit"
+                disabled={isSubmitting}
+                whileHover={!isSubmitting ? { scale: 1.01 } : {}}
+                whileTap={!isSubmitting ? { scale: 0.99 } : {}}
+                className="btn btn-luxury mt-7 w-full min-h-[3.25rem] justify-center gap-2 !py-3.5 disabled:cursor-not-allowed disabled:opacity-60 sm:mt-8 sm:min-h-14 sm:!py-0"
+              >
+                {isSubmitting ? (
+                  "Submitting..."
+                ) : (
+                  <>
+                    Submit Application
+                    <Send className="h-4 w-4 shrink-0" aria-hidden />
+                  </>
+                )}
+              </motion.button>
             </form>
           </motion.div>
         </Container>

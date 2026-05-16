@@ -17,10 +17,10 @@ function SuccessModal({ isOpen }) {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.85, opacity: 0, y: 24 }}
             transition={{ type: "spring", stiffness: 300, damping: 24 }}
-            className="relative w-full max-w-2xl rounded-[40px] glass-panel p-10 lg:p-12 overflow-hidden"
+            className="glass-panel relative w-full max-w-2xl overflow-hidden p-7 sm:max-w-3xl sm:p-10 lg:p-11 xl:max-w-3xl"
           >
             <motion.div
-              className="absolute top-0 right-0 w-60 h-60 bg-gradient-to-br from-teal-300/20 to-amber-300/20 blur-[80px] rounded-full"
+              className="pointer-events-none absolute top-0 right-0 h-60 w-60 rounded-full bg-gradient-to-br from-teal-300/20 to-amber-300/20 blur-[80px]"
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 4, repeat: Infinity }}
             />
@@ -30,44 +30,44 @@ function SuccessModal({ isOpen }) {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", delay: 0.15, stiffness: 200 }}
-                className="w-24 h-24 rounded-full bg-gradient-to-br from-teal-600 to-teal-400 flex items-center justify-center mx-auto shadow-xl shadow-teal-500/25"
+                className="mx-auto flex h-20 w-20 items-center justify-center rounded-[var(--radius-pill)] bg-gradient-to-br from-teal-600 to-teal-400 shadow-xl shadow-teal-500/25 sm:h-24 sm:w-24"
               >
-                <CheckCircle2 className="w-12 h-12 text-white" />
+                <CheckCircle2 className="h-10 w-10 text-white sm:h-12 sm:w-12" aria-hidden />
               </motion.div>
 
-              <h2 className="font-display text-4xl lg:text-5xl font-semibold mt-8 text-ink">
+              <h2 className="font-display mt-6 text-balance text-[clamp(1.75rem,4vw+0.75rem,3.25rem)] font-semibold leading-[1.15] text-ink sm:mt-8">
                 Application
-                <span className="block text-gradient-luxury mt-1">
+                <span className="mt-1 block text-gradient-luxury sm:mt-1.5">
                   Submitted Successfully
                 </span>
               </h2>
 
-              <p className="text-muted text-lg leading-relaxed mt-6 max-w-xl mx-auto">
-                Thank you for applying to the Cosmolix Industrial Internship Program
-                2026. Our team will review your application and contact shortlisted
-                students shortly.
+              <p className="mx-auto mt-4 max-w-xl text-pretty text-base leading-relaxed text-muted sm:mt-6 sm:text-lg">
+                Thank you for applying to the Cosmolix Industrial Internship Program 2026. Our team
+                will review your application and contact shortlisted students shortly.
               </p>
 
-              <div className="flex flex-wrap justify-center gap-4 mt-10">
+              <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                 <Button
                   href="https://chat.whatsapp.com/EAHPR4kmq7A5eu0xsK9kJF"
                   variant="gold"
-                  className="!text-white"
+                  className="min-h-[3rem] justify-center !text-white sm:min-h-0"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
                   Join WhatsApp Community
                 </Button>
 
                 <Button
                   href="https://cosmolix.co.in"
                   variant="outline"
+                  className="min-h-[3rem] justify-center sm:min-h-0"
                 >
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
                   Visit Website
                 </Button>
               </div>
 
-              <p className="text-sm text-muted-light mt-8">
+              <p className="mt-6 text-sm text-muted-light sm:mt-8">
                 You will be redirected to cosmolix.co.in shortly...
               </p>
             </div>

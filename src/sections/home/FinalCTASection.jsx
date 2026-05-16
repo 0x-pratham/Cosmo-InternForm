@@ -6,40 +6,41 @@ import Button from "../../components/ui/Button";
 
 function FinalCTASection() {
   return (
-    <Section className="pb-24 sm:pb-28">
+    <Section className="pb-20 sm:pb-24 lg:pb-28">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center p-8 sm:p-12 lg:p-14 glass-panel w-full max-w-3xl mx-auto"
+          className="glass-panel mx-auto w-full max-w-3xl px-6 py-9 text-center sm:max-w-4xl sm:px-10 sm:py-12 lg:px-14 lg:py-14"
         >
-          <p className="font-label uppercase text-xs text-teal-700 mb-4">
+          <p className="mb-3 font-label text-xs uppercase tracking-[0.14em] text-teal-700 sm:mb-4">
             Start Your Journey
           </p>
 
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-ink">
+          <h2 className="font-display text-balance text-[clamp(1.75rem,3.5vw+0.75rem,3rem)] font-semibold leading-[1.15] text-ink">
             Ready To Join
-            <span className="block text-gradient-luxury mt-1">
+            <span className="mt-1.5 block text-gradient-luxury sm:mt-2">
               Cosmolix Internship?
             </span>
           </h2>
 
-          <p className="text-muted text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mt-5">
-            Apply now for practical industry exposure, mentorship, project experience,
-            certification benefits, and career growth.
+          <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted sm:mt-5 sm:text-lg">
+            Apply now for practical industry exposure, mentorship, project experience, certification
+            benefits, and career growth.
           </p>
 
-          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mt-8">
-            <Button to="/apply" variant="primary">
+          <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+            <Button to="/apply" variant="primary" className="min-h-[3rem] justify-center sm:min-h-0">
               Apply Now
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
             </Button>
             <Button
               href="https://chat.whatsapp.com/EAHPR4kmq7A5eu0xsK9kJF"
               variant="outline"
+              className="min-h-[3rem] justify-center sm:min-h-0"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
               Join Community
             </Button>
           </div>

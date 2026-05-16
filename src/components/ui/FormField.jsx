@@ -6,7 +6,7 @@ function FormField({ label, error, children, className = "" }) {
       layout
       className={`flex flex-col ${className}`.trim()}
     >
-      <label className="block font-label text-xs uppercase tracking-wider text-muted mb-2.5">
+      <label className="mb-2 block font-label text-xs font-medium uppercase tracking-[0.12em] text-muted sm:mb-2.5">
         {label}
       </label>
 

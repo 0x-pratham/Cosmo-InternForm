@@ -16,7 +16,7 @@ function Section({
       id={id}
       className={[
         "page-section w-full",
-        id ? "scroll-mt-[calc(var(--nav-height)+1rem)]" : "",
+        id ? "scroll-mt-[calc(var(--nav-height)+1.25rem)]" : "",
         noPadding ? "!py-0" : "",
         variants[variant] ?? "",
         className,

@@ -78,13 +78,15 @@ function FeatureCard({ icon: Icon, title, description }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
       viewport={{ once: true }}
-      className="surface-card p-6 sm:p-7 h-full min-w-0"
+      className="surface-card h-full min-w-0 p-6 sm:p-7 lg:p-8"
     >
-      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-600 to-teal-400 flex items-center justify-center text-white mb-5">
-        <Icon className="w-5 h-5" />
+      <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)] bg-gradient-to-br from-teal-600 to-teal-400 text-white">
+        <Icon className="h-5 w-5" aria-hidden />
       </div>
-      <h3 className="font-display text-xl font-semibold text-ink mb-2">{title}</h3>
-      <p className="text-muted text-sm sm:text-base leading-relaxed">{description}</p>
+      <h3 className="font-display mb-2 text-lg font-semibold leading-snug text-ink text-balance sm:text-xl">
+        {title}
+      </h3>
+      <p className="text-pretty text-sm leading-relaxed text-muted sm:text-base">{description}</p>
     </motion.article>
   );
 }

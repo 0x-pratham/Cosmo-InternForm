@@ -10,20 +10,20 @@ function SectionHeader({ label, title, highlight, description }) {
       className="section-heading"
     >
       {label && (
-        <p className="font-label uppercase text-xs text-teal-700 mb-4 tracking-widest">
+        <p className="font-label mb-3 text-xs uppercase tracking-[0.14em] text-teal-700 sm:mb-4">
           {label}
         </p>
       )}
 
-      <h2 className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold leading-tight text-ink">
+      <h2 className="font-display text-balance text-[clamp(1.625rem,2.5vw+1rem,2.5rem)] font-semibold leading-[1.15] text-ink sm:text-[clamp(1.75rem,2.2vw+1rem,2.75rem)] lg:text-[clamp(1.875rem,2vw+1rem,2.75rem)]">
         {title}
         {highlight && (
-          <span className="block text-gradient-luxury mt-2">{highlight}</span>
+          <span className="mt-1.5 block text-gradient-luxury sm:mt-2">{highlight}</span>
         )}
       </h2>
 
       {description && (
-        <p className="text-muted text-base sm:text-lg mt-5 leading-relaxed max-w-2xl mx-auto">
+        <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted sm:mt-5 sm:text-lg">
           {description}
         </p>
       )}
